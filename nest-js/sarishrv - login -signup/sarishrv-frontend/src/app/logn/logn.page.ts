@@ -20,6 +20,7 @@ export class LognPage {
           // If authentication is successful, save the token to local storage
           localStorage.setItem('token', response.token);
           // Redirect to another page or perform any other action
+          console.log('login successful:', response);
           this.router.navigate(['/home']);
         },
         error => {
