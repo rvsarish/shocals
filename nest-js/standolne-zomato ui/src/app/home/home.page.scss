@@ -1,0 +1,171 @@
+// header-css
+.header-background {
+  background-image: url("../../assets/bg-img.png") !important;
+  color: white;
+}
+.restaurant-title {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+}
+.cart-count {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  font-size: 0.5rem;
+  height: 15px;
+  width: 15px;
+  background-color: #eb4356;
+  color: #fff;
+  padding: 2px;
+  text-align: center;
+  border-radius: 16px;
+}
+.cart-icon-style {
+  max-width: fit-content;
+}
+.restaurant-preference {
+  max-height: 20px;
+  max-width: 20px;
+}
+.pure-veg-card-row {
+  border: 1px solid #00a651;
+  gap: 2px;
+  max-width: 3.9em;
+}
+.pure-veg-card-col {
+  max-width: 2px;
+}
+.pure-veg-leaf {
+  height: 10px;
+  width: 10px;
+  padding: 1px;
+}
+.pure-veg-title {
+  max-width: 80px;
+  font-size: 8px;
+}
+.restaurant-address-img-col {
+  max-width: 40px;
+}
+.restaurant-img {
+  height: 40px;
+  width: 40px;
+}
+.restaurant-address {
+  font-size: 10px;
+  margin: 10px;
+  margin-top: 0px;
+  display: grid;
+  place-content: center;
+}
+.slot-timings {
+  --border-radius: 10px;
+  background-color: #fff5bf1a;
+  text-align: justify-all;
+  max-width: 95vw;
+  margin-left: 1vw;
+}
+.star-cols {
+  height: 13px;
+  width: 13px;
+}
+.star-rows {
+  max-width: 10em;
+  gap: 1px;
+  padding: 5px;
+}
+.star-text {
+  font-size: 13px;
+}
+.menu-review-btn {
+  min-height: 40px;
+}
+.menu-btn {
+  color: white;
+  background-color: #eb4356;
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+.reviews-btn {
+  color: white;
+  background-color: #36343b;
+  font-size: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+.menu-review-btn-highlight-ondown {
+  background-color: #eb4356;
+  color: #eb4356;
+  max-height: 5px;
+  font-size: xx-small;
+}
+
+// content-css
+.menu-search-bar {
+  max-width: 96vw;
+  margin-top: 15px;
+  margin-left: 8px;
+}
+.sortby-btn {
+  flex-grow: 1;
+  flex-basis: 0;
+  color: black;
+  --placeholder-color: black;
+  background-color: #efefef;
+  padding: 2px 2px;
+  border-radius: 5px;
+  border: none;
+  margin: 0;
+  font-weight: bold;
+}
+.filter-btn-rows {
+  display: flex;
+  justify-content: flex-start;
+  gap: 3px;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+.filter-each-buttons {
+  flex-grow: 1;
+  flex-basis: 0;
+  color: black;
+  gap: 5px;
+  background-color: #efefef;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 0;
+  font-weight: 900;
+}
+
+// footer
+.footer-btn {
+  top: 0px;
+  font-size: 12px;
+  padding: 5px;
+  font-weight: 600;
+  border: none;
+}
+.footer-btn-elements
+{
+  margin:10px;
+}
+
+// element selector style
+.footer
+{
+  background-color:#ffffff ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ion-select {
+  --highlight-color-focused: transparent;
+  --highlight-color-invalid: transparent;
+  --highlight-color-valid: transparent;
+}
+ion-icon {
+  cursor: pointer;
+}

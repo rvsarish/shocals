@@ -1,0 +1,38 @@
+<form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+
+  <div style="margin: 50px;">
+    <ion-row>Login</ion-row>
+    <ion-item>
+      <ion-input type="email" fill="solid" label="Email" labelPlacement="floating" formControlName="email"></ion-input>
+      @if (email.invalid && (email.dirty || email.touched)) {
+      <small>
+        @if (email.errors?.['required']) {
+        <small>Email Required</small>
+        }
+        @if (email.errors?.['email']) {
+        <small>Email should be valid</small>
+        }
+      </small>
+
+      }
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" fill="solid" label="Password" labelPlacement="floating" formControlName="password"></ion-input>
+      @if (password.invalid && (password.dirty || password.touched)) {
+      <small>
+        @if (password.errors?.['required']) {
+        <small>Password Required</small>
+        }
+        @if (password.errors?.['password']) {
+        <small>Password should be valid</small>
+        }
+      </small>
+
+      }
+    </ion-item>
+    <ion-button type="submit" expand="block" [disabled]="loginForm.invalid">Sign In</ion-button>
+    <ion-item>
+      Not a member? <ion-button href="/register" fill="clear" size="small" class="ion-no-padding">Register</ion-button>
+    </ion-item>
+  </div>
+</form>

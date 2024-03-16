@@ -1,0 +1,382 @@
+<ion-header>
+  <!-- header -->
+  <ion-toolbar>
+    <ion-grid class="bg1">
+      <!-- Arrow and cart icon -->
+      <ion-row ion-align-items="center">
+        <ion-col offset="0">
+          <ion-icon name="arrow-back" size="large"></ion-icon>
+        </ion-col>
+        <ion-col class="cart-icon-style">
+          <ion-icon size="large" name="cart"></ion-icon>
+          <ion-item color="undefined" class="cart-count" size="auto">
+              {{ itemsSelectedCount }}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <!-- title -->
+      <ion-row class="ion-text-center shop-title">
+        <ion-text>A2B - Adyar Ananda Bhavan</ion-text>
+      </ion-row>
+      <!-- veg and non veg status  and stars  -->
+      <ion-row>
+        <ion-col>
+          <ion-grid>
+            <ion-row class="veg-card-row">
+              <ion-col class="veg-card-col">
+                <ion-title icon="ion:leaf" class="leaf"></ion-title>
+              </ion-col>
+              <ion-col class="pure-veg-title">Pure Veg</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+
+
+        <ion-col size="auto">
+          <ion-row class="star-rows">
+            <ion-img src ="\assets\color-star.png" class="star-style"></ion-img>
+            <ion-img src ="\assets\color-star.png" class="star-style"></ion-img>
+            <ion-img src ="\assets\color-star.png" class="star-style"></ion-img>
+            <ion-img src ="\assets\color-star.png" class="star-style"></ion-img>
+            <ion-img src="\assets\white-star.png" class="star-style"></ion-img>
+            <ion-text class="star-text">4.2</ion-text>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+
+      <!-- Address -->
+      <ion-row>
+        <ion-col class="address">
+          <ion-img src="/assets/address-logo.png" class="address-img">
+
+          </ion-img>
+        </ion-col>
+        <ion-col class="address-text">
+          IMPERIAL TOWERS, Mettu Street, Sarvamangala Colony, Aruna Colony
+          Vadapalani, Egattur, Tamil Nadu - 600130
+        </ion-col>
+      </ion-row>
+
+      <!-- slot timings -->
+      <ion-row class="ion-justify-content-center transparency-text">
+        <ion-col class="--ion-text-font-weight: 300">2.6 km</ion-col>
+        <ion-col size="auto" class="transparency-text-slot"
+          >Next Slot: 12.00 PM-14.00 PM</ion-col
+        >
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+
+  <!-- Menu and Reviews Butto-->
+  <ion-row style="min-height: 35px">
+    <ion-col class="m-1 menu-reviews" (click)="switch1()">Menu</ion-col>
+    <ion-col class="m-2 reviews-menu" (click)="switch2()">Reviews</ion-col>
+  </ion-row>
+  <ion-row
+    class="m-3 menuma-reviews-down"
+    [ngStyle]="c2 ? {'background-color':'#36343b'} : {'background-color':'#eb4356'}"
+  >
+    &nbsp;
+  </ion-row>
+
+</ion-header>
+
+<!-- content -->
+<ion-content class="content">
+  <!-- search input bar -->
+  <ion-toolbar class="search-bar">
+    <ion-searchbar placeholder="Search Menu from A2B"></ion-searchbar>
+  </ion-toolbar>
+  <!-- Sort and other filter buttons  -->
+  <ion-row class="three-buttons">
+    <ion-button size="small" class="three-buttons" color="medium">
+      <ion-select
+        class="three-buttons-label-select"
+        interface="popover"
+        placeholder="Sort By"
+      >
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+      </ion-select>
+    </ion-button>
+    <ion-button size="small" color="medium" class="three-buttons">
+      <ion-label class="three-buttons-label">Veg Only</ion-label>
+    </ion-button>
+    <ion-button size="small" class="ion-text-wrap three-buttons" color="medium">
+      <ion-label class="three-buttons-label">Lessthan Rs. 300</ion-label>
+    </ion-button>
+  </ion-row>
+
+
+  <!-- Best Sellers -->
+  <ion-toolbar color="white" size="large">
+    <ion-item class="ion-text-left"
+      ><ion-text class="best-selleers">Best Sellers</ion-text>
+      </ion-item>
+    <app-menu [menuItem]="menu[1]"></app-menu>
+    <app-menu [menuItem]="menu[2]"></app-menu>
+    <app-menu [menuItem]="menu[3]"></app-menu>
+  </ion-toolbar>
+
+  <!-- North Indian -->
+  <ion-toolbar color="white" size="medium">
+    <ion-item class="ion-text-left best-selleers"
+      ><ion-text>North Indian</ion-text></ion-item
+    >
+    <ion-item>
+      <ion-select label="Subjees">
+        <ion-select-option value="">1</ion-select-option>
+        <ion-select-option value="">2</ion-select-option>
+        <ion-select-option value="">3</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[3]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+  </ion-toolbar>
+
+
+  <!-- Gravy -->
+  <ion-toolbar color="white" size="large">
+    <ion-item class="gravy-select">
+      <ion-select label="Gravy">
+        <ion-select-option value="">1</ion-select-option>
+        <ion-select-option value="">2</ion-select-option>
+        <ion-select-option value="">3</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+  </ion-toolbar>
+</ion-content>
+ <!-- footer -->
+<ion-footer>
+  <!-- Items Selected -->
+  <ion-item
+  *ngIf="itemsSelectedCount > 0 && !showNextDiv && !showcartorder"
+  class="selected-items"
+>
+  <ion-text>{{ itemsSelectedCount }} Items Selected</ion-text>
+  <ion-button
+    color="danger"
+    class="ion-text-wrap selected-items--button"
+    (click)="onProceedClick()"
+    >Proceed</ion-button
+  >
+</ion-item>
+<!-- Save for Later and Order Now buttons -->
+<ion-item  *ngIf="showNextDiv && !showcartorder" class="save-order">
+  <ion-button
+    color="none"
+    class="ion-text-wrap save-for-later-btn"
+    (click)="onSaveForLaterClick()"
+    >Save for Later</ion-button
+  >
+  <ion-button color="danger" class="ion-text-wrap" (click)="onOrderNowClick()"
+    >Order Now</ion-button
+  >
+</ion-item>
+<!-- Go to Cart button -->
+<ion-item  *ngIf="showcartorder" class="go-to-cart">
+  <ion-text>{{ itemsSelectedCount }} Items added to your Cart</ion-text>
+  <ion-button color="danger" class="ion-text-wrap">Goto Cart</ion-button>
+</ion-item>
+
+</ion-footer>
+.bg1 {
+  background-image: url("../../assets/bg-img.png");
+  color: white;
+}
+ion-icon {
+  cursor: pointer;
+}
+.cart-count {
+
+  background-color: #eb4356;
+  color: #fff;
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 10px;
+  height: 15px;
+  width: 15px;
+  text-align: center;
+  border-radius: 16px;
+
+}
+.cart-icon-style {
+  max-width: fit-content;
+}
+.shop-title {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+}
+.leaf {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-repeat: no-repeat;
+  padding: 1px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%2300a651' d='M161.35 242a16 16 0 0 1 22.62-.68c73.63 69.36 147.51 111.56 234.45 133.07c11.73-32 12.77-67.22 2.64-101.58c-13.44-45.59-44.74-85.31-90.49-114.86c-40.84-26.38-81.66-33.25-121.15-39.89c-49.82-8.38-96.88-16.3-141.79-63.85c-5-5.26-11.81-7.37-18.32-5.66c-7.44 2-12.43 7.88-14.82 17.6c-5.6 22.75-2 86.51 13.75 153.82c25.29 108.14 65.65 162.86 95.06 189.73c38 34.69 87.62 53.9 136.93 53.9a186 186 0 0 0 27.77-2.04c41.71-6.32 76.43-27.27 96-57.75c-89.49-23.28-165.94-67.55-242-139.16a16 16 0 0 1-.65-22.65m306.08 142.19c-16.83-2.59-33.13-5.84-49-9.77a157.71 157.71 0 0 1-12.13 25.68c-.73 1.25-1.5 2.49-2.29 3.71a584.21 584.21 0 0 0 58.56 12a16 16 0 1 0 4.87-31.62Z'/%3E%3C/svg%3E");
+  color: #00a651;
+  display: block;
+}
+.veg-card-row {
+  border: 1px solid #00a651;
+  gap: 2px;
+  max-width: 3.9em;
+}
+.pure-veg-title {
+  max-width: 80px;
+  font-size: 8px;
+}
+.veg-card-col {
+  max-width: 2px;
+}
+.star-style {
+  height: 13 px;
+  width: 13px;
+}
+.star-rows {
+  max-width: 8em;
+  gap: 2px;
+  padding: 5px;
+}
+.star-text {
+  font-size: 13px;
+}
+.address {
+  max-width: 40px;
+}
+.address-img {
+  height: 40px;
+  width: 40px;
+}
+.address-text {
+  font-size: 10px;
+  margin: 10px;
+  margin-top: 0px;
+  display: grid;
+  place-content: center;
+}
+.transparency-text {
+  --border-radius: 10px;
+  background-color: #fff5bf1a;
+  text-align: justify-all;
+  max-width: 95vw;
+  margin-left: 1vw;
+}
+.transparency-text-slot {
+  --ion-text-font-weight: 500;
+}
+.menu-reviews {
+  color: white;
+  background-color: #eb4356;
+  font-size: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+.reviews-menu {
+  color: white;
+  background-color: #36343b;
+  font-size: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+.menu-reviews-down {
+  background-color: #eb4356;
+  color: #eb4356;
+  max-height: 13px;
+  font-size: xx-small;
+}
+.three-buttons-label-select {
+  border: none;
+}
+.three-buttons-label-select:focus {
+  box-shadow: none;
+  border-color: transparent !important;
+}
+
+.search-bar {
+  max-width: 96vw;
+  margin-left: 5px;
+}
+.three-buttons-row {
+  gap: 2px;
+  margin-left: 10px;
+  font-weight: 500;
+}
+.three-buttons {
+  padding: 5px;
+  margin: 0px;
+}
+.three-buttons-label {
+  color: black;
+}
+.three-buttons-label-select {
+  color: black;
+  max-height: 10px;
+}
+.best-selleers {
+  font-weight: 600;
+}
+.gravy-select {
+  left: 1px;
+}
+
+.selected-items,
+.go-to-cart {
+  position: sticky;
+  top: 0px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #ededed;
+  border: none;
+}
+.save-order {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #ededed;
+  border: none;
+}
+.save-for-later-btn {
+  background-color: #fff;
+  color: black;
+  border: 1px solid #eb4356;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+ion-select {
+  --highlight-color-focused: transparent;
+  --highlight-color-invalid: transparent;
+  --highlight-color-valid: transparent;
+}

@@ -1,0 +1,32 @@
+<ion-item style="margin: 0;">
+  <ion-grid style="margin: 0;">
+    <ion-row>
+      <ion-col style="width: 40px;">
+        <ion-img [src]="menuItem.imgUrl" style="height: 99px; width: 83px;"></ion-img>
+        <img src="../../assets/gi.png" class="green-label" />
+      </ion-col>
+      <ion-col style="display: flex; align-items: center; max-width:80 px; ">
+        <ion-row style="font-size: 15px;">
+          {{ menuItem.name }}<br />
+          Serves {{ menuItem.serves }}<br />
+          {{ menuItem.price }}
+        </ion-row>
+      </ion-col>
+
+      <ion-col class="add-btn" style="max-width: fit-content; max-height: fit-content;">
+        <ng-container *ngIf="quantity === 0; else quantityDisplay">
+          <ion-button fill="outline" color="danger" size="auto" (click)="incrementQuantity(1)">
+            <div> Add </div>
+          </ion-button>
+        </ng-container>
+        <ng-template #quantityDisplay>
+          <ion-button fill="outline" color="danger" size="auto" class="addminus-group">
+            <div (click)="decrementQuantity(1)" class="add-minus"> - &nbsp; </div>
+            <div>{{ quantity }}</div>
+            <div (click)="incrementQuantity(1)" class="add-plus"> &nbsp; + </div>
+          </ion-button>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-item>

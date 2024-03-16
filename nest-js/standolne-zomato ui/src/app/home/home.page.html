@@ -1,0 +1,242 @@
+<ion-header>
+  <!-- header-with-background -->
+  <ion-toolbar>
+    <ion-grid class="header-background">
+      <!-- Arrow and cart icon -->
+      <ion-row ion-align-items="center">
+        <ion-col offset="0">
+          <ion-icon name="arrow-back" size="large"></ion-icon>
+        </ion-col>
+        <ion-col class="cart-icon-style">
+          <ion-icon size="large" name="cart"></ion-icon>
+          <span class="cart-count" size="auto">{{ itemsSelectedCount }}</span>
+        </ion-col>
+      </ion-row>
+
+      <!-- title -->
+      <ion-row class="ion-text-center restaurant-title">
+        <ion-text>{{restaurant[0].title }}</ion-text>
+      </ion-row>
+
+      <!-- veg and non veg status  and stars  -->
+      <ion-row>
+        <!-- veg and non veg status  -->
+        <ion-col>
+          <ion-grid>
+            @if(restaurant[0].preference === 'pure-veg') {
+            <ion-row class="pure-veg-card-row">
+              <ion-col class="pure-veg-card-col">
+                <ion-img
+                  class="pure-veg-leaf"
+                  src="/assets/veg-leaf.png"
+                ></ion-img>
+              </ion-col>
+              <ion-col class="pure-veg-title">Pure Veg</ion-col>
+            </ion-row>
+            } @if(restaurant[0].preference === 'pure-non-veg'){
+            <ion-row>
+              <ion-col>
+                <ion-img
+                  class="restaurant-preference"
+                  src="/assets/non-veg.png"
+                ></ion-img>
+              </ion-col> </ion-row
+            >} @if(restaurant[0].preference === 'veg-non-veg'){
+            <ion-row>
+              <ion-col>
+                <ion-img
+                  src="/assets/non-veg.png"
+                  class="restaurant-preference"
+                ></ion-img>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-img
+                  src="/assets/veg.png"
+                  style="max-height: 20px; max-width: 20px"
+                ></ion-img>
+              </ion-col>
+            </ion-row>
+            }
+          </ion-grid>
+        </ion-col>
+        <!-- rattings and stars -->
+        <ion-col size="auto" class="star-cols">
+          <ion-row class="star-rows">
+            <!-- yellow-star -->
+            <ng-container
+              *ngFor="let _ of [].constructor(restaurant[0]?.ratings_star_count || 0)"
+            >
+              <ion-col>
+                <ion-img
+                  src="\assets\color-star.png"
+                  class="star-style"
+                ></ion-img>
+              </ion-col>
+            </ng-container>
+            <!-- white-star -->
+            <ng-container
+              *ngFor="let _ of [].constructor(5 - (restaurant[0]?.ratings_star_count || 0))"
+            >
+              <ion-col>
+                <ion-img
+                  src="\assets\white-star.png"
+                  class="star-style"
+                ></ion-img>
+              </ion-col>
+            </ng-container>
+            <ion-col class="star-text">
+              <ion-text>{{restaurant[0].rating}}</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <!-- Address -->
+      <ion-row>
+        <ion-col class="restaurant-address-img-col">
+          <ion-img src="/assets/restaurant-logo.png" class="address-img">
+          </ion-img>
+        </ion-col>
+        <ion-col class="restaurant-address">
+          {{restaurant[0].address}}
+        </ion-col>
+      </ion-row>
+
+      <!-- slot timings -->
+      <ion-row class="ion-justify-content-center slot-timings">
+        <ion-col class="--ion-text-font-weight: 300"
+          >{{restaurant[0].distance}}</ion-col
+        >
+        <ion-col size="auto">{{restaurant[0].slot_timings}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+  <!-- Menu and Reviews Butto-->
+  <ion-row class="menu-review-btn">
+    <ion-col
+      class="menu-btn"
+      (click)="switch_menu_btn()"
+      [ngStyle]="c1 ? {'background-color':'#eb4356'} : {'background-color':'#36343b'}"
+      >Menu</ion-col
+    >
+    <ion-col
+      class="reviews-btn"
+      (click)="switch_reviews_btn()"
+      [ngStyle]="c2 ? {'background-color':'#eb4356'} : {'background-color':'#36343b'}"
+      >Reviews</ion-col
+    >
+  </ion-row>
+  <ion-row class="menu-review-btn-highlight-ondown"> &nbsp; </ion-row>
+</ion-header>
+
+<!-- content -->
+<ion-content class="content">
+
+  <ion-toolbar class="menu-search-bar">
+    <!-- search input bar -->
+    <ion-row>
+      <ion-searchbar
+        placeholder="Search Menu from {{restaurant[0].title }}"
+      ></ion-searchbar>
+    </ion-row>
+    <!-- Sort and other filter buttons  -->
+  
+   <ion-row class="filter-btn-rows">
+      <ion-col class="ion-text-wrap ..ion-justify-content-center sortby-btn" size="small" color="undefined">
+        <ion-select placeholder="Sort By">
+          <ion-select-option value="option1">1</ion-select-option>
+          <ion-select-option value="option2">2</ion-select-option>
+          <ion-select-option value="option3">3</ion-select-option>
+        </ion-select>
+      </ion-col>
+      <ion-col
+        class="filter-each-buttons ion-text-wrap ..ion-justify-content-center"
+        size="small"
+        color="undefined"
+        >Veg Only
+      </ion-col>
+      <ion-col
+        class="filter-each-buttons ion-text-wrap ..ion-justify-content-center"
+        size="small"
+        color="undefined"
+        >Lessthan Rs. 300</ion-col
+      >
+    </ion-row>
+  </ion-toolbar>
+
+  <!-- Best Sellers -->
+  <ion-toolbar color="white" size="large">
+    <ion-item class="ion-text-left"
+      ><ion-text>Best Sellers</ion-text>
+    </ion-item>
+    <app-menu [menuItem]="menu[1]"></app-menu>
+    <app-menu [menuItem]="menu[2]"></app-menu>
+    <app-menu [menuItem]="menu[3]"></app-menu>
+  </ion-toolbar>
+
+  <!-- North Indian -->
+  <ion-toolbar color="white" size="medium">
+    <ion-item class="ion-text-left best-selleers"
+      ><ion-text>North Indian</ion-text></ion-item
+    >
+    <ion-item>
+      <ion-select label="Subjees">
+        <ion-select-option value="">1</ion-select-option>
+        <ion-select-option value="">2</ion-select-option>
+        <ion-select-option value="">3</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[3]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+
+  </ion-toolbar>
+
+  <!-- Gravy -->
+  <ion-toolbar color="white" size="large">
+    <ion-item class="gravy-select">
+      <ion-select label="Gravy">
+        <ion-select-option value="">1</ion-select-option>
+        <ion-select-option value="">2</ion-select-option>
+        <ion-select-option value="">3</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+    <app-menu [menuItem]="menu[4]"></app-menu>
+  </ion-toolbar>
+</ion-content>
+
+
+<ion-footer class="footer">
+  <!-- Items Selected -->
+  @if(itemsSelectedCount > 0 && !showNextDiv && !showcartorder)
+  {
+    <ion-item class="footer-btn">
+      <ion-text class="footer-btn-elements">{{itemsSelectedCount}} Items Selected</ion-text>
+      <ion-button color="danger" class="ion-text-wrap footer-btn-elements" (click)="onProceedClick()">Proceed</ion-button>
+    </ion-item>
+  }
+
+  <!-- Save for Later and Order Now buttons -->
+  @if(showNextDiv && !showcartorder)
+  {
+    <ion-item class="footer-btn">
+      <ion-button color="light"  class="ion-text-wrap footer-btn-elements" (click)="onSaveForLaterClick()">Save for Later</ion-button>
+      <ion-button color="danger" class="ion-text-wrap footer-btn-elements" (click)="onOrderNowClick()">Order Now</ion-button>
+    </ion-item>
+  }
+
+  <!-- Go to Cart button -->
+  @if(showcartorder)
+  {
+    <ion-item class="footer-btn">
+      <ion-text class="footer-btn-elements">{{itemsSelectedCount }} Items added to your Cart</ion-text>
+      <ion-button color="danger" class="ion-text-wrap footer-btn-elements">Goto Cart</ion-button>
+    </ion-item>
+  }
+</ion-footer>
+
